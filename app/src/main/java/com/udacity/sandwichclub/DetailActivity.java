@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +21,11 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
     private TextView name;
+    private TextView alsoKnownAsTag;
     private TextView alsoKnownAs;
     private TextView origin;
     private TextView description;
+    private TextView ingredientsTag;
     private TextView ingredients;
 
 
@@ -76,19 +79,28 @@ public class DetailActivity extends AppCompatActivity {
 
         name.setText(sandwich.getMainName());
         List<String> alsoKnownAsList=sandwich.getAlsoKnownAs();
-        origin.setText(sandwich.getPlaceOfOrigin());
+        if(!sandwich.getPlaceOfOrigin().equals("")){
+            origin.setText(sandwich.getPlaceOfOrigin());
+        }
         List<String> ingredientsList=sandwich.getIngredients();
 
         if(!alsoKnownAsList.isEmpty()){
             for (String nickName:alsoKnownAsList){
                 alsoKnownAs.append(nickName+"\n\n\n");
             }
+        }else{
+            alsoKnownAsTag=(TextView)findViewById(R.id.also_knownTag_tv);
+            alsoKnownAsTag.setVisibility(View.INVISIBLE);
+
         }
 
         if(!ingredientsList.isEmpty()){
             for(String ingredientX:ingredientsList){
                 ingredients.append(ingredientX+"\n\n\n");
             }
+        }else{
+            ingredientsTag=(TextView)findViewById(R.id.ingredientsTag_tv);
+            ingredientsTag.setVisibility(View.INVISIBLE);
         }
 
 
