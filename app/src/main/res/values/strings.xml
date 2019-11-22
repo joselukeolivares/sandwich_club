@@ -7,6 +7,9 @@
     <string name="detail_description_label">Description:</string>
     <string name="detail_ingredients_label">Ingredients:</string>
 
+    <!-- Tags for sandwich UI-->
+    <string name="sandwichName">Name:</string>
+
     <!-- Content descriptions-->
     <string name="sandwich_picture_content_description">Sandwich picture</string>
 

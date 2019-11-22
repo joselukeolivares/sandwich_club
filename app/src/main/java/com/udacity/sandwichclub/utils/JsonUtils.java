@@ -9,11 +9,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JsonUtils {
 
     public static Sandwich parseSandwichJson(String json) {
 
         Sandwich sandwich=new Sandwich();
+        List<String> alsoKnownAsList=new ArrayList<String>();
+        List<String> ingredientsList=new ArrayList<String>();
 
         JSONObject reader;
 
@@ -30,24 +35,33 @@ public class JsonUtils {
 
 
 
-            Log.i("name",mainName);
+            //Log.i("name",mainName);
+            sandwich.setMainName(mainName);
 
             for (int i=0;i<alsoKnowAs.length();i++){
                 String nickName=alsoKnowAs.getString(i);
-                Log.i("Also know as",nickName);
+                //Log.i("Also know as",nickName);
+                alsoKnownAsList.add(nickName);
             }
-            Log.i("placeOfOrigin",placeOfOrigin);
-            Log.i("description",description);
-            Log.i("image",image);
+            sandwich.setAlsoKnownAs(alsoKnownAsList);
+            //Log.i("placeOfOrigin",placeOfOrigin);
+            sandwich.setPlaceOfOrigin(placeOfOrigin);
+            //Log.i("description",description);
+            sandwich.setDescription(description);
+            //Log.i("image",image);
+            sandwich.setImage(image);
             for (int i=0;i<ingredients.length();i++){
                 String ingredient=ingredients.getString(i);
-                Log.i("ingredient:",ingredient);
+                //Log.i("ingredient:",ingredient);
+                ingredientsList.add(ingredient);
             }
+            sandwich.setIngredients(ingredientsList);
+
 
         }catch (JSONException e){
             Log.e("Fail parsing the json",e.toString());
         }
 
-        return null;
+        return sandwich;
     }
 }
