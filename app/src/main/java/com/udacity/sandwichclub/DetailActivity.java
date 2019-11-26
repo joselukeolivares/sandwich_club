@@ -27,6 +27,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView description;
     private TextView ingredientsTag;
     private TextView ingredients;
+    private  TextView orginTag;
 
 
     @Override
@@ -76,11 +77,15 @@ public class DetailActivity extends AppCompatActivity {
         origin=(TextView)findViewById(R.id.origin_tv);
         ingredients=(TextView)findViewById(R.id.ingredients_tv);
         description=(TextView)findViewById(R.id.description_tv);
+        orginTag=(TextView)findViewById(R.id.originTag_tv);
 
         name.setText(sandwich.getMainName());
         List<String> alsoKnownAsList=sandwich.getAlsoKnownAs();
-        if(!sandwich.getPlaceOfOrigin().equals("")){
+        if(!sandwich.getPlaceOfOrigin().equals("") && sandwich.getPlaceOfOrigin()!=null ){
+
             origin.setText(sandwich.getPlaceOfOrigin());
+        }else{
+            orginTag.setVisibility(View.INVISIBLE);
         }
         List<String> ingredientsList=sandwich.getIngredients();
 
@@ -93,6 +98,8 @@ public class DetailActivity extends AppCompatActivity {
             alsoKnownAsTag.setVisibility(View.INVISIBLE);
 
         }
+
+
 
         if(!ingredientsList.isEmpty()){
             for(String ingredientX:ingredientsList){
