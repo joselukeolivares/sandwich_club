@@ -86,7 +86,7 @@ public class DetailActivity extends AppCompatActivity {
 
         if(!alsoKnownAsList.isEmpty()){
             for (String nickName:alsoKnownAsList){
-                alsoKnownAs.append(nickName+"\n\n\n");
+                alsoKnownAs.append(nickName+"\n");
             }
         }else{
             alsoKnownAsTag=(TextView)findViewById(R.id.also_knownTag_tv);
@@ -96,7 +96,7 @@ public class DetailActivity extends AppCompatActivity {
 
         if(!ingredientsList.isEmpty()){
             for(String ingredientX:ingredientsList){
-                ingredients.append(ingredientX+"\n\n\n");
+                ingredients.append(ingredientX+"\n");
             }
         }else{
             ingredientsTag=(TextView)findViewById(R.id.ingredientsTag_tv);
