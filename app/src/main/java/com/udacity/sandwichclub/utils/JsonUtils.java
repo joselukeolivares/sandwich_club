@@ -40,7 +40,7 @@ public class JsonUtils {
 
             for (int i=0;i<alsoKnowAs.length();i++){
                 String nickName=alsoKnowAs.getString(i);
-                //Log.i("Also know as",nickName);
+                //Log.i(".Also know as",nickName);
                 alsoKnownAsList.add(nickName);
             }
             sandwich.setAlsoKnownAs(alsoKnownAsList);
